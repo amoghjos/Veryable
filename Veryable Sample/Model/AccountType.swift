@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum AccountType: String {
+enum AccountType: String, CaseIterable {
     case card
     case bank
 }

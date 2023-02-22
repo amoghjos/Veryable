@@ -24,7 +24,37 @@ class AccountListViewController: UITableViewController {
 }
 
 extension AccountListViewController: AccountListViewModelDelegate {
-    func didReceiveAccounts(_ accounts: [String : [Account]]) {
-        print(accounts)
+    func didReceiveAccounts() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
+
+extension AccountListViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.accounts.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let accountType = AccountType.allCases[section]
+        return viewModel.accounts[accountType.rawValue]?.count ?? 0
+
+    }
+}
+
+extension AccountListViewController {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let accountType = AccountType.allCases[section]
+        switch accountType {
+        case .bank:
+            return "Bank Accounts"
+        case .card:
+            return "Cards"
+        }
     }
 }

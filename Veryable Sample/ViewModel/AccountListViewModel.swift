@@ -9,26 +9,30 @@
 import Foundation
 
 protocol AccountListViewModelDelegate: AnyObject {
-    func didReceiveAccounts(_ accounts: [String:[Account]])
+    func didReceiveAccounts()
 }
 
 class AccountListViewModel {
     
     weak var delegate: AccountListViewModelDelegate?
+    var accounts = [String:[Account]]()
     
     init(){
+        getAccounts()
+    }
+        
+    private func getAccounts() {
         guard let url = NetworkModel.buildURL(from: EndPoints.Veryable.creditCards) else {
             preconditionFailure("Unable to make URL from EndPoint")
         }
         
         typealias VeryableNetworkResponse = [Account]
         
-        #warning("fix memory leak")
         NetworkModel.makeRequest(at: url) { (result: Result<VeryableNetworkResponse, Error>) in
             switch result {
             case .success(let accounts):
-                let seperateAccounts = self.seperateAccounts(accounts)
-                self.delegate?.didReceiveAccounts(seperateAccounts)
+                self.accounts = self.seperateAccounts(accounts)
+                self.delegate?.didReceiveAccounts()
             case .failure(let error):
                 preconditionFailure("Unable to get account information. Something went wrong with networking. Please check the error: \(error)")
             }
@@ -40,9 +44,9 @@ class AccountListViewModel {
         for account in accounts {
             switch account.accountType {
             case AccountType.card.rawValue:
-                dict["Cards", default: []].append(account)
+                dict[account.accountType, default: []].append(account)
             case AccountType.bank.rawValue:
-                dict["Bank Accounts", default: []].append(account)
+                dict[account.accountType, default: []].append(account)
             default:
                 break
             }
