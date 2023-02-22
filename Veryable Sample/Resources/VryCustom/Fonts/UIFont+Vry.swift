@@ -6,7 +6,6 @@
 //  Copyright © 2021 Veryable Inc. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIFont {

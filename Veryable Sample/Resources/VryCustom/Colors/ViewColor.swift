@@ -6,7 +6,6 @@
 //  Copyright © 2020 Veryable, Inc. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public enum ViewColor: VColor {
