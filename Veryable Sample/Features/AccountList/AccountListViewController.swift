@@ -11,7 +11,6 @@ import UIKit
 
 class AccountListViewController: UIViewController {
 
-    //MARK: Inits
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "Accounts".uppercased()
