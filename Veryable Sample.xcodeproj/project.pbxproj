@@ -65,9 +65,10 @@
 		515EC6B1242E5FBA00B21DBB /* Veryable Sample */ = {
 			isa = PBXGroup;
 			children = (
-				515EC6B2242E5FBA00B21DBB /* AppDelegate.swift */,
-				6A948ADF265FEEA0005A22DA /* Features */,
-				6A948AFC265FF473005A22DA /* VryCustom */,
+				CD68518B29A5EE4000D39AFE /* Config */,
+				CD68518929A5EDFF00D39AFE /* Model */,
+				CD68518829A5EDF400D39AFE /* View */,
+				CD68518A29A5EE1900D39AFE /* ViewModel */,
 				6A948AEA265FF01C005A22DA /* Resources */,
 			);
 			path = "Veryable Sample";
@@ -82,25 +83,10 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		6A948ADF265FEEA0005A22DA /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				6A948AE0265FEEB7005A22DA /* AccountList */,
-			);
-			path = Features;
-			sourceTree = "<group>";
-		};
-		6A948AE0265FEEB7005A22DA /* AccountList */ = {
-			isa = PBXGroup;
-			children = (
-				6A948AE4265FEFCB005A22DA /* AccountListViewController.swift */,
-			);
-			path = AccountList;
-			sourceTree = "<group>";
-		};
 		6A948AEA265FF01C005A22DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6A948AFC265FF473005A22DA /* VryCustom */,
 				515EC6BB242E5FBC00B21DBB /* Assets.xcassets */,
 				515EC6C3242E5FBC00B21DBB /* Info.plist */,
 			);
@@ -140,6 +126,36 @@
 				CDFCC6589E8234DDBAFB6174 /* Pods_Veryable_Sample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD68518829A5EDF400D39AFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6A948AE4265FEFCB005A22DA /* AccountListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CD68518929A5EDFF00D39AFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CD68518A29A5EE1900D39AFE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CD68518B29A5EE4000D39AFE /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				515EC6B2242E5FBA00B21DBB /* AppDelegate.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
