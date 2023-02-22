@@ -13,6 +13,7 @@ class AccountListViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "Accounts".uppercased()
+        AccountListViewModel().getCreditCards()
     }
     
     required init?(coder: NSCoder) { nil }
