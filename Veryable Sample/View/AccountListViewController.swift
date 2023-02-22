@@ -10,13 +10,7 @@ import UIKit
 
 class AccountListViewController: UIViewController {
  
-    var viewModel = AccountListViewModel()
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) { nil }
+    lazy private var viewModel = AccountListViewModel()
     
     override func viewDidLoad() {
         self.title = "ACCOUNTS"

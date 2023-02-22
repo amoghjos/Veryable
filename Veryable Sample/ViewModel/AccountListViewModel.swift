@@ -28,7 +28,7 @@ class AccountListViewModel {
             case .success(let accounts):
                 self.delegate?.didReceiveAccounts(accounts)
             case .failure(let error):
-                preconditionFailure("Unable to get account information. Something went wrong with networking")
+                preconditionFailure("Unable to get account information. Something went wrong with networking. Please check the error: \(error)")
             }
         }
     }
