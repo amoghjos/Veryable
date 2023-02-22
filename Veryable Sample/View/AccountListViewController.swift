@@ -8,19 +8,23 @@
 
 import UIKit
 
-class AccountListViewController: UIViewController {
+class AccountListViewController: UITableViewController {
  
-    lazy private var viewModel = AccountListViewModel()
+    private lazy var viewModel = AccountListViewModel()
     
     override func viewDidLoad() {
-        self.title = "ACCOUNTS"
-        view.backgroundColor = ViewColor.background.color
         viewModel.delegate = self
+        setUpUserInterface()
+    }
+    
+    private func setUpUserInterface() {
+        title = "ACCOUNTS"
+        view.backgroundColor = ViewColor.background.color
     }
 }
 
 extension AccountListViewController: AccountListViewModelDelegate {
-    func didReceiveAccounts(_ accounts: [Account]) {
+    func didReceiveAccounts(_ accounts: [String : [Account]]) {
         print(accounts)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AccountListViewModelDelegate: AnyObject {
-    func didReceiveAccounts(_ accounts: [Account])
+    func didReceiveAccounts(_ accounts: [String:[Account]])
 }
 
 class AccountListViewModel {
@@ -23,14 +23,30 @@ class AccountListViewModel {
         
         typealias VeryableNetworkResponse = [Account]
         
+        #warning("fix memory leak")
         NetworkModel.makeRequest(at: url) { (result: Result<VeryableNetworkResponse, Error>) in
             switch result {
             case .success(let accounts):
-                self.delegate?.didReceiveAccounts(accounts)
+                let seperateAccounts = self.seperateAccounts(accounts)
+                self.delegate?.didReceiveAccounts(seperateAccounts)
             case .failure(let error):
                 preconditionFailure("Unable to get account information. Something went wrong with networking. Please check the error: \(error)")
             }
         }
     }
     
+    private func seperateAccounts(_ accounts: [Account]) -> [String: [Account]] {
+        var dict = [String:[Account]]()
+        for account in accounts {
+            switch account.accountType {
+            case AccountType.card.rawValue:
+                dict["Cards", default: []].append(account)
+            case AccountType.bank.rawValue:
+                dict["Bank Accounts", default: []].append(account)
+            default:
+                break
+            }
+        }
+        return dict
+    }
 }
