@@ -9,16 +9,24 @@
 import UIKit
 
 class AccountListViewController: UIViewController {
-
+ 
+    var viewModel = AccountListViewModel()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.title = "Accounts".uppercased()
-        AccountListViewModel().getCreditCards()
     }
     
     required init?(coder: NSCoder) { nil }
     
     override func viewDidLoad() {
+        self.title = "ACCOUNTS"
         view.backgroundColor = ViewColor.background.color
+        viewModel.delegate = self
+    }
+}
+
+extension AccountListViewController: AccountListViewModelDelegate {
+    func didReceiveAccounts(_ accounts: [Account]) {
+        print(accounts)
     }
 }
