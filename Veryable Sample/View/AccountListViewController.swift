@@ -20,6 +20,7 @@ class AccountListViewController: UITableViewController {
     private func setUpUserInterface() {
         title = "ACCOUNTS"
         view.backgroundColor = ViewColor.background.color
+        tableView.separatorStyle = .none
     }
 }
 
@@ -45,7 +46,7 @@ extension AccountListViewController {
 
 extension AccountListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return AccountListTableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
