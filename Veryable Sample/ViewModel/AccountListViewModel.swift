@@ -28,9 +28,10 @@ class AccountListViewModel {
         
         typealias VeryableNetworkResponse = [Account]
         
-        NetworkModel.makeRequest(at: url) { (result: Result<VeryableNetworkResponse, Error>) in
+        NetworkModel.makeRequest(at: url) { [weak self] (result: Result<VeryableNetworkResponse, Error>) in
             switch result {
             case .success(let accounts):
+                guard let self = self else { return }
                 self.accounts = self.seperateAccounts(accounts)
                 self.delegate?.didReceiveAccounts()
             case .failure(let error):
