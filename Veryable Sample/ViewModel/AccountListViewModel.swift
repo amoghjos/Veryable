@@ -20,6 +20,13 @@ class AccountListViewModel {
     init(){
         getAccounts()
     }
+    
+    func getAccount(section: Int, row: Int) -> Account {
+        let accountType = AccountType.allCases[section]
+        let accounts = accounts[accountType.rawValue]!
+        let account = accounts[row]
+        return account
+    }
         
     private func getAccounts() {
         guard let url = NetworkModel.buildURL(from: EndPoints.Veryable.creditCards) else {

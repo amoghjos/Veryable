@@ -50,9 +50,7 @@ extension AccountListViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? AccountListTableViewCell else {
             preconditionFailure("Unable to create AccountListTableViewCell")
         }
-        let accountType = AccountType.allCases[indexPath.section]
-        let accounts = viewModel.accounts[accountType.rawValue]!
-        let account = accounts[indexPath.row]
+        let account = viewModel.getAccount(section: indexPath.section, row: indexPath.row)
         cell.setUp(with: account)
         return cell
     }
@@ -71,7 +69,8 @@ extension AccountListViewController {
 //MARK: Delegate
 extension AccountListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let accountDetailVC = AccountDetailViewController()
+        let account = viewModel.getAccount(section: indexPath.section, row: indexPath.row)
+        let accountDetailVC = AccountDetailViewController(with: account)
         navigationController?.pushViewController(accountDetailVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

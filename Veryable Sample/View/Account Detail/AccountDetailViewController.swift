@@ -38,10 +38,8 @@ class AccountDetailViewController: UIViewController {
         return label
     }()
     
-    private lazy var image: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = VBlue.normal.color
-        imageView.image = UIImage(named: "card")?.withRenderingMode(.alwaysTemplate)
         imageView.contentMode = .scaleAspectFit
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -65,6 +63,26 @@ class AccountDetailViewController: UIViewController {
         setUpCustomBackButton()
         setUpVerticalStackView()
         setUpButton()
+    }
+    
+    init(with account: Account) {
+        super.init(nibName: nil, bundle: nil)
+        setUpUserInterfaceDetails(with: account)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func setUpUserInterfaceDetails(with account: Account) {
+        titleLabel.text = account.accountName
+        subTitleLabel.text = account.description
+        if account.accountType == AccountType.bank.rawValue {
+            imageView.image = UIImage(named: "bank")?.withRenderingMode(.alwaysTemplate)
+        } else {
+            imageView.image = UIImage(named: "card")?.withRenderingMode(.alwaysTemplate)
+        }
+        imageView.tintColor = VBlue.normal.color
     }
     
     //MARK: Back Button
@@ -91,7 +109,7 @@ class AccountDetailViewController: UIViewController {
             verticalStackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             verticalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30)
         ])
-        verticalStackView.addArrangedSubview(image)
+        verticalStackView.addArrangedSubview(imageView)
         verticalStackView.addArrangedSubview(titleLabel)
         verticalStackView.addArrangedSubview(subTitleLabel)
     }
