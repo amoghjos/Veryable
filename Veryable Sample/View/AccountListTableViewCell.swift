@@ -10,6 +10,15 @@ import UIKit
 
 class AccountListTableViewCell: UITableViewCell {
     
+    //seperator view
+    private lazy var bottomSeperatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = VGrey.normal.color
+        return view
+    }()
+    
+    //horizontal stack view
     private lazy var horizontalStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -70,6 +79,7 @@ class AccountListTableViewCell: UITableViewCell {
     //MARK: Init Methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setUpBottomSeperatorView()
         setUpHorizontalStackView()
         setUpVerticalStackView()
     }
@@ -78,12 +88,22 @@ class AccountListTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    private func setUpBottomSeperatorView() {
+        addSubview(bottomSeperatorView)
+        NSLayoutConstraint.activate([
+            bottomSeperatorView.leftAnchor.constraint(equalTo: leftAnchor),
+            bottomSeperatorView.rightAnchor.constraint(equalTo: rightAnchor),
+            bottomSeperatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            bottomSeperatorView.heightAnchor.constraint(equalToConstant: 1)
+        ])
+    }
+    
     private func setUpHorizontalStackView() {
         addSubview(horizontalStack)
         NSLayoutConstraint.activate([
             horizontalStack.leftAnchor.constraint(equalTo: leftAnchor),
             horizontalStack.rightAnchor.constraint(equalTo: rightAnchor),
-            horizontalStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            horizontalStack.bottomAnchor.constraint(equalTo: bottomSeperatorView.topAnchor),
             horizontalStack.topAnchor.constraint(equalTo: topAnchor)
         ])
     }
