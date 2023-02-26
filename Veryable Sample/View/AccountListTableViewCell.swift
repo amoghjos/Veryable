@@ -14,7 +14,10 @@ class AccountListTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10)
+//        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        stackView.distribution = .fill
         return stackView
     }()
     
@@ -29,10 +32,50 @@ class AccountListTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    // vertical stack view
+    private lazy var verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
+        return stackView
+    }()
+    
+    private lazy var accountTypeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .vryAvenirNextDemiBold(14)
+        label.textColor = VBlack.normal.color
+        label.text = "Headline"
+        return label
+    }()
+    
+    private lazy var accountInfoLabel: UILabel = {
+        let label = UILabel()
+        label.font = .vryAvenirNextRegular(12)
+        label.textColor = VBlack.normal.color
+        label.text = "Subheadline"
+        return label
+    }()
+    
+    private lazy var transactionInfoLabel: UILabel = {
+        let label = UILabel()
+        label.font = .vryAvenirNextRegular(12)
+        label.textColor = VGrey.normal.color
+        label.text = "Transaction Details"
+        return label
+    }()
+    
     //MARK: Init Methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpHorizontalStackView()
+        setUpVerticalStackView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     private func setUpHorizontalStackView() {
@@ -46,10 +89,9 @@ class AccountListTableViewCell: UITableViewCell {
     }
     
     private func setUpVerticalStackView() {
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        horizontalStack.addArrangedSubview(verticalStackView)
+        verticalStackView.addArrangedSubview(accountTypeLabel)
+        verticalStackView.addArrangedSubview(accountInfoLabel)
+        verticalStackView.addArrangedSubview(transactionInfoLabel)
     }
 }

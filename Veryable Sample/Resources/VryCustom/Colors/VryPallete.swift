@@ -108,3 +108,13 @@ public enum VPink: VColor {
         }
     }
 }
+
+public enum VBlack: VColor {
+    case normal, light, dark
+    public var color: UIColor {
+        switch self {
+        default:
+            return UIColor(named: "Headline")!
+        }
+    }
+}
