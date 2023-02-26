@@ -9,6 +9,6 @@
 import Foundation
 
 enum AccountType: String, CaseIterable {
-    case card
     case bank
+    case card
 }

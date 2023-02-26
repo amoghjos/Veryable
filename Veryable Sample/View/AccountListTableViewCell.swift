@@ -99,6 +99,16 @@ class AccountListTableViewCell: UITableViewCell {
         setUpVerticalStackView()
     }
     
+    func setUp(with account: Account) {
+        accountTypeLabel.text = account.accountName
+        accountInfoLabel.text = account.description
+        if account.accountType == AccountType.bank.rawValue {
+            transactionInfoLabel.text = "Bank Account: ACH - Same Day"
+        } else {
+            transactionInfoLabel.text = "Card: Instant"
+        }
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
