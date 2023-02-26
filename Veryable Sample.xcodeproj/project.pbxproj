@@ -22,6 +22,7 @@
 		CD68519A29A6310400D39AFE /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68519929A6310400D39AFE /* Account.swift */; };
 		CD68519C29A63B3600D39AFE /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68519B29A63B3600D39AFE /* AccountType.swift */; };
 		CD68519E29A64A8D00D39AFE /* AccountListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68519D29A64A8D00D39AFE /* AccountListTableViewCell.swift */; };
+		CD84ACFD29AB631200D90F53 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD84ACFC29AB631200D90F53 /* AccountDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		CD68519929A6310400D39AFE /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		CD68519B29A63B3600D39AFE /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
 		CD68519D29A64A8D00D39AFE /* AccountListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableViewCell.swift; sourceTree = "<group>"; };
+		CD84ACFC29AB631200D90F53 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +125,8 @@
 		CD68518829A5EDF400D39AFE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6A948AE4265FEFCB005A22DA /* AccountListViewController.swift */,
-				CD68519D29A64A8D00D39AFE /* AccountListTableViewCell.swift */,
+				CD84ACFA29AB62F200D90F53 /* Account List */,
+				CD84ACFB29AB62FD00D90F53 /* Account Detail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +182,23 @@
 				CD68519329A6208800D39AFE /* Veryable.swift */,
 			);
 			path = Veryable;
+			sourceTree = "<group>";
+		};
+		CD84ACFA29AB62F200D90F53 /* Account List */ = {
+			isa = PBXGroup;
+			children = (
+				6A948AE4265FEFCB005A22DA /* AccountListViewController.swift */,
+				CD68519D29A64A8D00D39AFE /* AccountListTableViewCell.swift */,
+			);
+			path = "Account List";
+			sourceTree = "<group>";
+		};
+		CD84ACFB29AB62FD00D90F53 /* Account Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CD84ACFC29AB631200D90F53 /* AccountDetailViewController.swift */,
+			);
+			path = "Account Detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +276,7 @@
 				6A948AE5265FEFCB005A22DA /* AccountListViewController.swift in Sources */,
 				CD68519C29A63B3600D39AFE /* AccountType.swift in Sources */,
 				CD68519829A622DA00D39AFE /* AccountListViewModel.swift in Sources */,
+				CD84ACFD29AB631200D90F53 /* AccountDetailViewController.swift in Sources */,
 				6A948B01265FF5CA005A22DA /* ViewColor.swift in Sources */,
 				CD68519A29A6310400D39AFE /* Account.swift in Sources */,
 				6A948AFF265FF490005A22DA /* UIFont+Vry.swift in Sources */,

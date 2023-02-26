@@ -34,6 +34,7 @@ extension AccountListViewController: AccountListViewModelDelegate {
     }
 }
 
+//MARK: Data Source
 extension AccountListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.accounts.count
@@ -44,9 +45,7 @@ extension AccountListViewController {
         return viewModel.accounts[accountType.rawValue]?.count ?? 0
 
     }
-}
-
-extension AccountListViewController {
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? AccountListTableViewCell else {
             preconditionFailure("Unable to create AccountListTableViewCell")
@@ -66,5 +65,14 @@ extension AccountListViewController {
         case .card:
             return "Cards"
         }
+    }
+}
+
+//MARK: Delegate
+extension AccountListViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let accountDetailVC = AccountDetailViewController()
+        navigationController?.pushViewController(accountDetailVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
