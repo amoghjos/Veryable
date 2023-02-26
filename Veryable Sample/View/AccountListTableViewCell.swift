@@ -23,10 +23,10 @@ class AccountListTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         stackView.distribution = .fill
+        stackView.spacing = 10
         return stackView
     }()
     
@@ -36,8 +36,23 @@ class AccountListTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = VBlue.normal.color
         imageView.image = UIImage(named: "card")?.withRenderingMode(.alwaysTemplate)
+        let heightConstrain = imageView.heightAnchor.constraint(equalToConstant: 30)
+        heightConstrain.priority = UILayoutPriority(10)
+        heightConstrain.isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        return imageView
+    }()
+    
+    private lazy var rightImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.tintColor = VGrey.normal.color
+        imageView.image = UIImage(named: "arrow")?.withRenderingMode(.alwaysTemplate)
+        let heightConstrain = imageView.heightAnchor.constraint(equalToConstant: 30)
+        heightConstrain.priority = UILayoutPriority(10)
+        heightConstrain.isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -48,7 +63,7 @@ class AccountListTableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .fillEqually
-        stackView.spacing = 5
+        stackView.spacing = 10
         return stackView
     }()
     
@@ -88,6 +103,7 @@ class AccountListTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    //MARK: Setup UI Elements
     private func setUpBottomSeperatorView() {
         addSubview(bottomSeperatorView)
         NSLayoutConstraint.activate([
@@ -106,10 +122,12 @@ class AccountListTableViewCell: UITableViewCell {
             horizontalStack.bottomAnchor.constraint(equalTo: bottomSeperatorView.topAnchor),
             horizontalStack.topAnchor.constraint(equalTo: topAnchor)
         ])
+        horizontalStack.addArrangedSubview(leftImageView)
+        horizontalStack.addArrangedSubview(verticalStackView)
+        horizontalStack.addArrangedSubview(rightImageView)
     }
     
     private func setUpVerticalStackView() {
-        horizontalStack.addArrangedSubview(verticalStackView)
         verticalStackView.addArrangedSubview(accountTypeLabel)
         verticalStackView.addArrangedSubview(accountInfoLabel)
         verticalStackView.addArrangedSubview(transactionInfoLabel)

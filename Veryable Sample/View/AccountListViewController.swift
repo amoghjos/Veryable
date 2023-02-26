@@ -20,6 +20,8 @@ class AccountListViewController: UITableViewController {
     private func setUpUserInterface() {
         title = "ACCOUNTS"
         view.backgroundColor = ViewColor.background.color
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 30
         tableView.separatorStyle = .none
     }
 }
