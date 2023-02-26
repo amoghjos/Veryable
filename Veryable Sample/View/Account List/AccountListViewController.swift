@@ -20,7 +20,7 @@ class AccountListViewController: UITableViewController {
     
     private func setUpUserInterface() {
         title = "ACCOUNTS"
-        view.backgroundColor = ViewColor.background.color
+        view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .systemBackground : ViewColor.background.color
         tableView.separatorStyle = .none
         tableView.register(AccountListTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }

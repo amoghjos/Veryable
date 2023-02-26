@@ -59,7 +59,7 @@ class AccountDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         title = "DETAILS"
-        view.backgroundColor = ViewColor.background.color
+        view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .systemBackground : ViewColor.background.color
         setUpCustomBackButton()
         setUpVerticalStackView()
         setUpButton()
@@ -91,7 +91,7 @@ class AccountDetailViewController: UIViewController {
         let backButtonImage = arrowImage.withHorizontallyFlippedOrientation()
         let backButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         backButton.addTarget(self, action: #selector(goBackToAccountListViewController), for: .touchUpInside)
-        backButton.tintColor = .black
+        backButton.tintColor = traitCollection.userInterfaceStyle == .dark ? UIColor.white : VBlue.normal.color
         backButton.setBackgroundImage(backButtonImage, for: .normal)
         let customBarButtonItem = UIBarButtonItem(customView: backButton)
         navigationItem.leftBarButtonItem = customBarButtonItem

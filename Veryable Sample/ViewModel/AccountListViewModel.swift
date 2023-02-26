@@ -23,7 +23,9 @@ class AccountListViewModel {
     
     func getAccount(section: Int, row: Int) -> Account {
         let accountType = AccountType.allCases[section]
-        let accounts = accounts[accountType.rawValue]!
+        guard let accounts = accounts[accountType.rawValue] else {
+            preconditionFailure("Unable to find AccountType")
+        }
         let account = accounts[row]
         return account
     }
